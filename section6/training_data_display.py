@@ -80,7 +80,23 @@ for line in training_data_file:
     training_data.append([float(line[0]) - refer_point_0, float(line[1]) - refer_point_1, int(line[2])])
 training_data_file.close()
 
-print(training_data)
-
 # ニュラルネットワークのインスタンス
 neural_network = NeuralNetwork()
+
+# 訓練用データの表示の準備
+position_tokyo_learing = [[], []]
+position_kanagawa_leaning = [[], []]
+for data in training_data:
+    if data[2] < 0.5:
+        position_tokyo_learing[0].append(data[1] + refer_point_1)
+        position_tokyo_learing[1].append(data[0] + refer_point_0)
+    else:
+        position_kanagawa_leaning[0].append(data[1] + refer_point_1)
+        position_kanagawa_leaning[1].append(data[0] + refer_point_0)
+
+# プロット
+plt.scatter(position_tokyo_learing[0], position_tokyo_learing[1], c="red", label="tokyo", marker="+")
+plt.scatter(position_kanagawa_leaning[0], position_kanagawa_leaning[1], c="blue", label="kanagawa", marker="+")
+
+plt.legend()
+plt.show()
