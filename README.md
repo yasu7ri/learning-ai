@@ -4,7 +4,7 @@
 
 ## section5:ニューラルネットワーク
 
-## section6Ω機械学習
+## section6:機械学習
 
 ## section7:機械学習ライブラリの活用(scikit-learn)
 
